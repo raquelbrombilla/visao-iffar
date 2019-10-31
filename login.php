@@ -3,26 +3,31 @@
 ?>
 <html>
   <head meta chasrset='utf-8'>
-    <link rel="stylesheet" type="text/css" href="CSS.css">
 </head>
 <center>
-    Informe seus dados para fazer login
-<?php
-  if(isset($_SESSION['erros'])){
-    echo$_SESSION['erros'];
-    }
-?>
-  <form method='POST' action="logar.php">
-  
-    E-mail:
-      <input type = "text" name="email" pattern=".{11,11}" placeholder="Obrigatoriamente 11 dígitos">
+
+     Informe seus dados para fazer login:
     <br>
+
+
+    <?php
+      if(isset($_SESSION['erros'])){
+        echo$_SESSION['erros'];
+      }
+    ?>
+
+  <form method='POST' action="logar.php">
+  <br>
+    E-mail:
+      <input type = "text" name="email">
+    <br><br>
 
     Senha:
-      <input type = "password" name="senha" pattern=".{4,200}" placeholder="Mínimo 4 caracteres">
+      <input type = "password" name="senha">
     <br>
-
+    <br>
     <button type='submit'>Fazer login</button>
+
   </form>
 </center>  
 </body>

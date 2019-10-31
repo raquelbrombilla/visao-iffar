@@ -2,11 +2,12 @@
     session_start();
 
     include "conexaobanco.php";
-    $senha = $_POST['senha'];
     $email = $_POST['email'];
+    $senha = $_POST['senha'];
 
         if(empty($email) or empty($senha)){
-            $_SESSION['erros'] = "Campos não podem ser nulos.";
+            $_SESSION['erros'] = "Campos não podem ser nulos";
+
             header('location: login.php');
             exit();
         }else{
@@ -15,7 +16,7 @@
 
     $senha = mysqli_real_escape_string($cadastro, $senha);
 
-    $query = "select * from usuario where email = '{$email}' and senha = '{$senha}'";
+    $query = "select * from usuarios where email = '{$email}' and senha = '{$senha}'";
 
     $result = mysqli_query($cadastro, $query);
 
@@ -23,14 +24,19 @@
 
     $usuario = mysqli_fetch_array($result);
 
-        if($row == 1) {
-            $_SESSION['email'] = $email;
-            $_SESSION['tipo'] = $usuario["tipo"];
-            unset($_SESSION['erros']);
-            echo"Login realizado com sucesso!!!";
-        }else{
-            $_SESSION['erros'] = "Usuário ou senha incorretos!";
-            header('location:login.php');
-        }
+
+
+    if($row == 1) {
+        $_SESSION['email'] = $email;
+        $_SESSION['admin'] = $usuario["admin"];
+        unset($_SESSION['erros']);
+        header('location:solicitacoes.php');
+
+    }else{
+        $_SESSION['erros'] = "Usuário ou senha incorretos!";
+        header('location:login.php');
     }
+}
+
+
 ?>

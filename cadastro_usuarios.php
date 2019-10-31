@@ -1,12 +1,11 @@
 <?php
   session_start();
     if(isset($_SESSION['erros'])){
-    echo "<label class='dados' >".$_SESSION['erros']."</label>";
+    echo $_SESSION['erros'];
     }
 ?>
 <html>
     <head meta chasrset='utf-8'>
-      <link rel="stylesheet" type="text/css" href="CSS.css">
 </head>
 <body>
 
@@ -23,9 +22,10 @@
     <br>
     
     Senha:
-    <input type = "password" name="senha" pattern=".{4,200}" placeholder="Mínimo 4 caracteres">
+    <input type = "password" name="senha">
     <br>
     
+    <br>
     <button type='submit'>Cadastrar</button>
 
   </form>

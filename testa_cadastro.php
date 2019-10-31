@@ -1,15 +1,14 @@
 <?php
     include "conexaobanco.php";
-        $nome = $_POST['nome'];
+
         $email = $_POST['email'];
+        $nome = $_POST['nome'];
         $senha = $_POST['senha'];
-        $id_usuario = $_POST['id_usuario'];
-        $adimin = $_POST['adimin']
-        $sql = "insert into usuario(nome,email,senha,id_usuario,adimin) values('$nome','$email','$senha','$id_usuario','1')";
-  
-    $query = mysqli_query($cadastro,$sql);
+        
+    $query= "insert into usuarios(email,nome,senha,foto, admin) values('$email','$nome','$senha','null','0')";
+    $return = mysqli_query($cadastro,$query);
     
-    if($query){
+    if($return){
         echo "Cadastro realizado com sucesso!";
         header("location:login.php");
     }else{
@@ -21,9 +20,3 @@
     mysqli_close($cadastro);
 ?>
 
-<?php
-session_start();
-if($_SESSION['adimin'] == 1){
-    header('location:login.php');
-}
-?>
