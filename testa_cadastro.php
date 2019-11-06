@@ -33,14 +33,6 @@
             </script>";
             }
 
-//Faz a verificação do tamanho do arquivo
-            /*else if ($_UP['tamanho'] < $_FILES['foto']['size']){
-            echo "<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/Visao_IFFAR/cadastro_usuarios.php'>
-            <script type=\"text/javascript\">
-            alert(\"Arquivo muito grande.\");
-            </script>";
-            }*/
-
  //O arquivo passou em todas as verificações, hora de tentar move-lo para a pasta foto
             else{
 

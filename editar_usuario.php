@@ -27,10 +27,17 @@
 		<label>Email</label>
 		<input type="email" name="email" value="<?php echo $user['email']; ?>">
 
+
+
 		<label>Foto</label>
-		<input type="file" name="foto" value="<?php echo $user['foto']; ?>">
+		<input type="file" name="foto" >
+
+		<input type="hidden" name="id" value ="<?php echo $user['id_usuario']; ?>">
+		
+
 
 		<button type='submit'>Salvar</button>
+		
 
 
 	</form>

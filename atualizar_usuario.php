@@ -1,38 +1,80 @@
- <?php 
-	include "conexaobanco.php";
-	$id = $_GET['id'];
-	$sql = "select * from usuarios where email = '$id'";
-	$result = mysqli_query($conexao, $sql);
-	$user = mysqli_fetch_array($result);
-	
-	mysqli_close($conexao);
- ?>
+<?php
+    include_once"conexaobanco.php";
 
- <!DOCTYPE html>
- <html>
+        $email = $_POST['email'];
+        $nome = $_POST['nome'];
+        $foto = $_FILES['foto']['name'];
 
- <head>
- 	<title>Edição</title>
- </head>
+//Foto perfil usuario
+    $_UP['pasta'] = 'fotos/';
+    //$_UP['tamanho'] = 1024 -1024-100;
+    $_UP['extensao'] = array('png','jpg','jpeg','gif');
 
- <body>
+    $_UP['renomeia'] = true;
+    $_UP['erros'][0] = 'Não houve erro';
+    $_UP['erros'][1] = 'A foto no upload é maior que o limite do PHP';
+    $_UP['erros'][2] = 'A foto ultrapassa o limite de tamanho especificado no HTML';
+    $_UP['erros'][3] = 'A foto foi feito parcialmente';
+    $_UP['erros'][4] = 'Não foi feito o upload da foto';
+            
+//Verifica se houve algum erro com o upload. Sem sim, exibe a mensagem do erro
+            if($_FILES['foto']['error'] != 0){
+            die("Não foi possivel fazer o upload, erro: <br />". $_UP['erros'][$_FILES['foto']['error']]);
+            exit; //Para a execução do script
+            }
 
- 	Formulário de Edição Cadastro
+//Faz a verificação da extensao do arquivo
+            $exp = explode('.', $foto);
+            $extensao = strtolower(end($exp));
+            if(array_search($extensao, $_UP['extensao'])=== false){        
+            echo "<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/Visao-IFFar/perfil.php'>
+            <script type=\"text/javascript\"> 
+            alert(\"A imagem não foi cadastrada extesão inválida.\");
+            </script>";
+            }
 
-	<form method="POST" action="atualizar_usuario.php" enctype="multipart/form-data">
-	
-		<label>Nome</label>
-		<input type="text" name="nome" value="<?php echo $user['nome']; ?>">
+ //O arquivo passou em todas as verificações, hora de tentar move-lo para a pasta foto
+            else{
 
-		<label>Email</label>
-		<input type="email" name="email" value="<?php echo $user['email']; ?>">
+//Primeiro verifica se deve trocar o nome do arquivo
 
-		<label>Foto</label>
-		<input type="file" name="foto" value="<?php echo $user['foto']; ?>">
+            if($_UP['renomeia'] == true){
 
-		<button type='submit'>Salvar</button>
+//Cria um nome baseado no UNIX TIMESTAMP atual e com extensão .jpg
+
+            $nome_final = time().'.jpg';
+            }else{
+
+//mantem o nome original do arquivo
+            $nome_final = $_FILES['foto']['name'];
+            }
+//Verificar se é possivel mover o arquivo para a pasta escolhida
+
+            if(move_uploaded_file($_FILES['foto']['tmp_name'], $_UP['pasta']. $nome_final)){
+
+//Upload efetuado com sucesso, exibe a mensagem
+
+                  
+        $sql= " update usuarios set email = '$email', nome = '$nome' ,foto = '$nome_final' where id_usuario = " .$_POST['id'];
+       
+        if($return = mysqli_query($conexao,$sql)){
+        	
+            echo "<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/Visao-IFFar/perfil.php'>
+            <script type=\"text/javascript\">
+            alert(\"Perfil atualizado com sucesso.\");
+            </script>";
+
+            }else{
+//Upload não efetuado com sucesso, exibe a mensagem
+            
+            echo "<META HTTP-EQUIV=REFRESH CONTENT = '0; URL=http://localhost/Visao-IFFar/perfil.php'>
+            <script type=\"text/javascript\">
+            alert(\"Não foi possivel atualizar o perfil.\");
+            </script>";
+            }
+            }
+
+           }
 
 
-	</form>
- </body>
- </html>
+
