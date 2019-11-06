@@ -11,7 +11,7 @@
 
     Informe seus dados para realizar o cadastro:
 
-  <form method='POST' action="testa_cadastro.php">
+  <form method='POST' action="testa_cadastro.php" enctype="multipart/form-data">
 
     Nome:      
     <input type = "text" name="nome">
@@ -24,7 +24,11 @@
     Senha:
     <input type = "password" name="senha">
     <br>
-    
+
+    Foto:
+    <input type = "file" name="foto">
+    <br>
+
     <br>
     <button type='submit'>Cadastrar</button>
 

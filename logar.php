@@ -12,25 +12,27 @@
             exit();
         }else{
 
-    $email = mysqli_real_escape_string($cadastro, $email);
+    $email = mysqli_real_escape_string($conexao, $email);
 
-    $senha = mysqli_real_escape_string($cadastro, $senha);
+    $senha = mysqli_real_escape_string($conexao, $senha);
 
     $query = "select * from usuarios where email = '{$email}' and senha = '{$senha}'";
 
-    $result = mysqli_query($cadastro, $query);
+    $result = mysqli_query($conexao, $query);
 
     $row = mysqli_num_rows($result);
 
     $usuario = mysqli_fetch_array($result);
 
+ 
 
 
     if($row == 1) {
         $_SESSION['email'] = $email;
         $_SESSION['admin'] = $usuario["admin"];
+        $_SESSION['id_usuario'] = $usuario["id_usuario"];
         unset($_SESSION['erros']);
-        header('location:solicitacoes.php');
+        header('location:perfil.php');
 
     }else{
         $_SESSION['erros'] = "Usuário ou senha incorretos!";
