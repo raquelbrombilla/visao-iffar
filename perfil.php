@@ -17,7 +17,7 @@ include "conexaobanco.php";
 			echo "Olá ".$array["nome"];	echo"<br>";
 			echo $array["email"];	echo"<br>";
 	
-			echo "<img src=fotos/".$array['foto']."  width='250' height='300'>";	
+			echo "<img src=fotos/".$array['foto']."  width='285' height='300'>";	
 			
 		?>
 		<br></br>
