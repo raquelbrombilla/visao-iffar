@@ -1,4 +1,6 @@
  <?php
+ echo"oi":
+
   session_start();
     if(isset($_SESSION['erros'])){
     echo $_SESSION['erros'];

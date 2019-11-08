@@ -1,4 +1,6 @@
  <?php 
+ echo"oi":
+
 	include "conexaobanco.php";
 	$id = $_GET['id'];
 	$sql = "select * from usuarios where id_usuario = '$id'";

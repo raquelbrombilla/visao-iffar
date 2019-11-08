@@ -1,4 +1,6 @@
 <?php
+echo"oi":
+
     include_once"conexaobanco.php";
 
         $email = $_POST['email'];

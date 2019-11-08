@@ -1,4 +1,6 @@
 <?php 
+echo"oi":
+
 	include "conexaobanco.php";
 	$id = $_GET['id'];
 	$sql = "DELETE FROM usuarios WHERE id_usuario= $id";

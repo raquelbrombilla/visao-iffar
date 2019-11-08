@@ -1,4 +1,6 @@
 <?php
+echo"oi":
+
 include "conexaobanco.php";
 $sql="select * from usuarios";
 echo $sql;

@@ -1,4 +1,5 @@
 <?php
+echo"oi":
 
 	include "../bd/conexaobanco.php";
 	session_start();

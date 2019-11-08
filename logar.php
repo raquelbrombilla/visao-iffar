@@ -1,4 +1,6 @@
 <?php
+echo"oi":
+
     session_start();
 
     include "conexaobanco.php";

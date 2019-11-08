@@ -1,4 +1,6 @@
 <?php
+echo"oi":
+
 session_start();
 include "conexaobanco.php";
 	$consultausuario = "SELECT * FROM usuarios where id_usuario = ".$_SESSION['id_usuario'];
