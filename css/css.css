@@ -1,0 +1,211 @@
+
+
+.sub_header {
+    padding: 25px 0px;
+}
+
+.sub_header .sub_header_social_icon .btn_1 {
+  color: #fff;
+  background-color: #06355de8;
+}
+
+/* line 98, /Applications/MAMP/htdocs/palash/cl/august 2019/198 Animal adoption/198 Animal adoption html/sass/_menu.scss */
+.sub_header .sub_header_social_icon .btn_1:hover {
+  background-color: #06355de8;
+}
+
+
+/* line 104, /Applications/MAMP/htdocs/palash/cl/august 2019/198 Animal adoption/198 Animal adoption html/sass/_menu.scss */
+.main_menu {
+  background-color: #06355de8;
+  padding: 0px;
+}
+
+/* line 106, /Applications/MAMP/htdocs/palash/cl/august 2019/198 Animal adoption/198 Animal adoption html/sass/_menu.scss */
+.main_menu .navbar {
+  padding: 0px;
+  margin: 0px;
+}
+
+/* line 111, /Applications/MAMP/htdocs/palash/cl/august 2019/198 Animal adoption/198 Animal adoption html/sass/_menu.scss */
+.main_menu ul li {
+  display: inline-block;
+  font-size: 16px;
+  text-transform: capitalize;
+  padding: 0px 10px;
+}
+
+/* line 115, /Applications/MAMP/htdocs/palash/cl/august 2019/198 Animal adoption/198 Animal adoption html/sass/_menu.scss */
+.main_menu ul li :hover {
+  color: #b7bbc1 !important;
+}
+
+/* line 118, /Applications/MAMP/htdocs/palash/cl/august 2019/198 Animal adoption/198 Animal adoption html/sass/_menu.scss */
+.main_menu ul li a {
+  color: #fff !important;
+  padding: 27px 35px !important;
+  line-height: 16px;
+}
+
+@media (max-width: 991px) {
+  /* line 118, /Applications/MAMP/htdocs/palash/cl/august 2019/198 Animal adoption/198 Animal adoption html/sass/_menu.scss */
+  .main_menu ul li a {
+    padding: 12px 10px !important;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  .main_menu ul li a {
+    padding: 27px 20px !important;
+  }
+}
+
+/* line 132, /Applications/MAMP/htdocs/palash/cl/august 2019/198 Animal adoption/198 Animal adoption html/sass/_menu.scss */
+.main_menu .header_social_icon ul li {
+  padding-right: 13px;
+}
+
+/* line 134, /Applications/MAMP/htdocs/palash/cl/august 2019/198 Animal adoption/198 Animal adoption html/sass/_menu.scss */
+.main_menu .header_social_icon ul li a {
+  color: #c3c6c9;
+}
+
+/* line 136, /Applications/MAMP/htdocs/palash/cl/august 2019/198 Animal adoption/198 Animal adoption html/sass/_menu.scss */
+.main_menu .header_social_icon ul li a:hover {
+  color: #53C9BB;
+}
+
+@media (max-width: 991px) {
+  /* line 143, /Applications/MAMP/htdocs/palash/cl/august 2019/198 Animal adoption/198 Animal adoption html/sass/_menu.scss */
+  .main_menu .navbar {
+    padding: 15px 0;
+  }
+  /* line 147, /Applications/MAMP/htdocs/palash/cl/august 2019/198 Animal adoption/198 Animal adoption html/sass/_menu.scss */
+  .main_menu .navbar-toggler i {
+    color: #fff;
+    font-size: 30px;
+  }
+  /* line 152, /Applications/MAMP/htdocs/palash/cl/august 2019/198 Animal adoption/198 Animal adoption html/sass/_menu.scss */
+  .main_menu .navbar-collapse {
+    position: absolute;
+    left: 0;
+    top: 71px;
+    width: 100%;
+    background-color: #fff;
+    z-index: 999;
+  }
+  /* line 160, /Applications/MAMP/htdocs/palash/cl/august 2019/198 Animal adoption/198 Animal adoption html/sass/_menu.scss */
+  .main_menu .nav-item {
+    padding: 5px 10px 5px 15px;
+    background-color: #53C9BB;
+  }
+  /* line 164, /Applications/MAMP/htdocs/palash/cl/august 2019/198 Animal adoption/198 Animal adoption html/sass/_menu.scss */
+  .main_menu .navbar-nav .nav-link:hover {
+    color: #fff !important;
+  }
+  /* line 168, /Applications/MAMP/htdocs/palash/cl/august 2019/198 Animal adoption/198 Animal adoption html/sass/_menu.scss */
+  .main_menu .dropdown .dropdown-menu {
+    transform: scale(1, 0);
+    display: none;
+  }
+  /* line 173, /Applications/MAMP/htdocs/palash/cl/august 2019/198 Animal adoption/198 Animal adoption html/sass/_menu.scss */
+  .main_menu .dropdown:hover .dropdown-menu {
+    transform: scale(1);
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  .main_menu .dropdown .dropdown-menu {
+    transform: scale(1, 0);
+    display: none;
+  }
+  .main_menu .dropdown:hover .dropdown-menu {
+    transform: scale(1);
+    display: block;
+  }
+}
+
+/* line 197, /Applications/MAMP/htdocs/palash/cl/august 2019/198 Animal adoption/198 Animal adoption html/sass/_menu.scss */
+.menu_fixed {
+  position: fixed;
+  z-index: 9999 !important;
+  width: 100%;
+  background-color: #06355de8;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.05);
+  top: 0;
+}
+
+.menu_fixed span {
+  color: #165992 !important;
+}
+
+.menu_fixed ul li a:hover {
+  color: #fff !important;
+}
+
+.dropdown-menu {
+  border: 0px solid rgba(0, 0, 0, 0.15) !important;
+  background-color: #fafafa;
+}
+
+.dropdown .dropdown-menu {
+  transition: all 0.5s;
+  overflow: hidden;
+  transform-origin: top center;
+  transform: scale(1, 0);
+  display: block;
+  border-radius: 0;
+  padding: 0;
+  margin-top: 0;
+}
+
+.dropdown .dropdown-menu .dropdown-item {
+  font-size: 14px;
+  padding: 12px 20px !important;
+  color: #716262!important;
+}
+
+.dropdown .dropdown-menu .dropdown-item:hover {
+  background-color: #06355de8;
+  color: #fff !important;
+}
+
+.dropdown:hover .dropdown-menu {
+  transform: scale(1);
+}
+
+#txtBusca{
+    font-family: Arial;
+    opacity: 0.7;
+    float: left;
+    background-color: transparent;
+    padding-left: 10px;
+    padding-top: 5px;
+    font-size: 15px;
+    border: none;
+    height: 30px;
+    width: 220px;
+}
+ 
+#btnBusca{
+  float:left;
+  cursor:pointer;
+}
+ 
+#divBusca img{
+     float: left;
+    padding-top: 10px;
+    padding-right: 10px;
+}
+
+#divBusca{
+  border:solid 2px rgba(47, 79, 79, 0.8);
+  border-radius:10px;
+}
+
+.container-form {
+  margin-top: 5%
+}
+
+
