@@ -3,10 +3,16 @@
 	session_start();
 	include "conexao.php";
 
+	if( !isset($_SESSION['id_usuario']) ){
+			header('location: login.php');
+			exit();
+		}
+
 	$sql = "SELECT * FROM usuarios where id_usuario = ".$_SESSION['id_usuario'];
 	$result = mysqli_query($conexao, $sql);
 	$array = mysqli_fetch_array($result);
 
+	$foto = $array['foto'];
 ?>
 
 <!DOCTYPE html>
@@ -17,20 +23,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 	<title>Visão IFFar</title>
-
-	<!--Template form // fonte e etc -->
-	<link rel="icon" type="image/png" href="form/images/icons/favicon.ico"/>
-	<link rel="stylesheet" type="text/css" href="form/vendor/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="form/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="form/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
-	<link rel="stylesheet" type="text/css" href="form/vendor/animate/animate.css">
-	<link rel="stylesheet" type="text/css" href="form/vendor/css-hamburgers/hamburgers.min.css">
-	<link rel="stylesheet" type="text/css" href="form/vendor/animsition/css/animsition.min.css">
-	<link rel="stylesheet" type="text/css" href="form/vendor/select2/select2.min.css">
-	<link rel="stylesheet" type="text/css" href="form/vendor/daterangepicker/daterangepicker.css">
-	<link rel="stylesheet" type="text/css" href="form/css/util.css">
-	<link rel="stylesheet" type="text/css" href="form/css/main.css">
-
 
 	<!-- Bt e template menu -->
 	<link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
@@ -59,35 +51,89 @@
 
 
 	?>
+		
+			<div class='container pt'>
+			<div class="perfil">
+								<div class="jumbotron">
 
-		<div class="container">
-	
 				<?php
 
 					if(isset($_SESSION['msg'])){
 						echo $_SESSION['msg'];
 						unset($_SESSION['msg']);
 					}
-
-				//	if ($array['foto'] == true) {
-
-						echo "
-							<div class='col-5'>
-							<img src='imagens/".$array['foto']."'  width='285' height='300'>
-							<br>
-
-
-							<h5><a href='user/editar_usuario.php?id=".$array['id_usuario']."'>Editar <i class='far fa-edit'></i></a></h5>";
-
-					//}
 				?>
+				<div class="row">
+	
+			<?php
 
-			
+
+				if ($foto == true) {
+					  
+					echo "<div class='col-12 col-sm-12 col-md-12 col-lg-4 d-flex justify-content-center'>
+							<img src='img/imagens/$foto' style='height: 300px; width: 300px; border-radius: 50%;' class='text-center'>
+						</div>";
+					echo "<div class='tabela col-12 col-sm-12 col-md-12 col-lg-8'>
+						<h3>Meus dados:</h3>
+						<div class='table-responsive'>
+						<table class='table'>
+							<thead>
+								<tr>
+									<th>Nome</th>
+									<th>E-mail</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>";
+								echo "<tr>
+									<td>".$array['nome']."</td>";
+								echo "<td>".$array['email']."</td>";
+								echo "<td><h6><a href='user/editar_usuario.php?id=".$array['id_usuario']."'>Editar  <i class='far fa-edit'></i></a></h6></td>
+									</tr>";
+						
+						echo "</tbody>
+							</table>
+							</div>
+							</div>";
+
+			} else {
+
+				echo "<div class='col-4 col-sm-12 col-md-12 col-lg-4'>
+							<img src='img/imagens/usuario.png' style='height: 300px; width: 300px; border-radius: 50%; border: solid;'>
+						</div>";
+					echo "<div class='tabela col-8 col-sm-12 col-md-12 col-lg-8'>
+						<h3>Meus dados:</h3>
+						<div class='table-responsive'>
+						<table class='table'>
+							<thead>
+								<tr>
+									<th>Nome</th>
+									<th>E-mail</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>";
+								echo "<tr><td>".$array['nome']."</td>";
+								echo "<td>".$array['email']."</td>";
+								echo "<td><h6><a href='user/editar_usuario.php?id=".$array['id_usuario']."'>Editar  <i class='far fa-edit'></i></a></h6></td></tr>";
+						echo "</tbody>
+							</table>
+							</div>";	
+
+				}
+				
+			?>
+
 			</div>
-			
-
-
 		</div>
+			</div>
+</div>
+</div>
+	<?php
+
+		include "footer.php";
+
+	?>
 	
 	</body>
 </html>

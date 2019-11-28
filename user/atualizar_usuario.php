@@ -1,82 +1,62 @@
 <?php
-echo"oi":
 
-    include_once"conexaobanco.php";
+    include "../conexao.php";
+    session_start();
 
         $email = $_POST['email'];
         $nome = $_POST['nome'];
         $foto = $_FILES['foto']['name'];
 
-//Foto perfil usuario
-    $_UP['pasta'] = 'fotos/';
-    //$_UP['tamanho'] = 1024 -1024-100;
-    $_UP['extensao'] = array('png','jpg','jpeg','gif');
-
-    $_UP['renomeia'] = true;
-    $_UP['erros'][0] = 'Não houve erro';
-    $_UP['erros'][1] = 'A foto no upload é maior que o limite do PHP';
-    $_UP['erros'][2] = 'A foto ultrapassa o limite de tamanho especificado no HTML';
-    $_UP['erros'][3] = 'A foto foi feito parcialmente';
-    $_UP['erros'][4] = 'Não foi feito o upload da foto';
+         if (isset($_FILES['foto']['name'] ) && $_FILES['foto']['error'] == 0) {
+             
+            $arquivo_tmp = $_FILES['foto']['tmp_name'];
+            $nome_img = $_FILES['foto']['name'];
             
-//Verifica se houve algum erro com o upload. Sem sim, exibe a mensagem do erro
-            if($_FILES['foto']['error'] != 0){
-            die("Não foi possivel fazer o upload, erro: <br />". $_UP['erros'][$_FILES['foto']['error']]);
-            exit; //Para a execução do script
-            }
+            $extensao = pathinfo ( $nome_img, PATHINFO_EXTENSION );// Pega a extensão
+            $extensao = strtolower ( $extensao ); // Converte a extensão para minúsculo
+          
+            if ( strstr ( '.jpg;.jpeg;.gif;.png', $extensao ) ) { // Somente imagens, .jpg;.jpeg;.gif;.png
+                // Cria um nome unico p imagem, evita que tenha 2x a imagem no servidor
+                // Evita nomes com acentos, espaços e caracteres não alfanuméricos
+                $novoNome = uniqid ( time () ) . '.' . $extensao;
+     
+                $destino = '../img/imagens/'. $novoNome; //caminho das imagens
 
-//Faz a verificação da extensao do arquivo
-            $exp = explode('.', $foto);
-            $extensao = strtolower(end($exp));
-            if(array_search($extensao, $_UP['extensao'])=== false){        
-            echo "<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/Visao-IFFar/perfil.php'>
-            <script type=\"text/javascript\"> 
-            alert(\"A imagem não foi cadastrada extesão inválida.\");
-            </script>";
-            }
+                // tenta mover o arquivo para o destino
+                if (move_uploaded_file ( $arquivo_tmp, $destino) ) {
 
- //O arquivo passou em todas as verificações, hora de tentar move-lo para a pasta foto
-            else{
+                    $sql = "update usuarios set email = '$email', nome = '$nome', foto = '$novoNome' where id_usuario = " .$_SESSION['id_usuario'];
+                    $result = mysqli_query($conexao,$sql);
 
-//Primeiro verifica se deve trocar o nome do arquivo
+                    if ($result == true) {
+                        $_SESSION['msg'] ="<div class='alert alert-success'><strong>Usuário atualizado com sucesso!</strong></div>";
+                        header("location: ../perfil.php");
+                        exit();
+                    } else
+                    echo 'Erro ao atualizar o arquivo. <br />';
+                } else
+                    echo "Erro ao atualizar foto";
 
-            if($_UP['renomeia'] == true){
-
-//Cria um nome baseado no UNIX TIMESTAMP atual e com extensão .jpg
-
-            $nome_final = time().'.jpg';
-            }else{
-
-//mantem o nome original do arquivo
-            $nome_final = $_FILES['foto']['name'];
-            }
-//Verificar se é possivel mover o arquivo para a pasta escolhida
-
-            if(move_uploaded_file($_FILES['foto']['tmp_name'], $_UP['pasta']. $nome_final)){
-
-//Upload efetuado com sucesso, exibe a mensagem
-
-                  
-        $sql= " update usuarios set email = '$email', nome = '$nome' ,foto = '$nome_final' where id_usuario = " .$_POST['id'];
-       
-        if($return = mysqli_query($conexao,$sql)){
-        	
-            echo "<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/Visao-IFFar/perfil.php'>
-            <script type=\"text/javascript\">
-            alert(\"Perfil atualizado com sucesso.\");
-            </script>";
-
-            }else{
-//Upload não efetuado com sucesso, exibe a mensagem
+            } else
+                echo 'Arquivo inválido. Você pode enviar apenas arquivos "*.jpg;*.jpeg;*.gif;*.png"<br />';
             
-            echo "<META HTTP-EQUIV=REFRESH CONTENT = '0; URL=http://localhost/Visao-IFFar/perfil.php'>
-            <script type=\"text/javascript\">
-            alert(\"Não foi possivel atualizar o perfil.\");
-            </script>";
-            }
-            }
+        } else { 
+                    $sql2 = "update usuarios set email = '$email', nome = '$nome' where id_usuario = " .$_SESSION['id_usuario'];
+                    $result2 = mysqli_query($conexao,$sql2);
+                    var_dump($result2);
 
-           }
-
+                    if ($result2) {
+                        $_SESSION['msg'] ="<div class='alert alert-success'><strong>Usuário atualizado com sucesso!</strong></div>";
+                        header("location: ../perfil.php");
+                        exit();
+                    } else {
+                        $_SESSION['msg'] = "<div class='alert alert-danger'><strong>Esse email já está sendo usado.</strong></div>";
+                        header("location: ../perfil.php");
+                     }
+                
+        }
+        
+        mysqli_close($conexao);
+?>
 
 

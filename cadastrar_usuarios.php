@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include_once"conexao.php";
+    include "conexao.php";
 
     $nome = $_POST['nome'];
     $email = $_POST['email'];
@@ -20,7 +20,7 @@
                 // Evita nomes com acentos, espaços e caracteres não alfanuméricos
                 $novoNome = uniqid ( time () ) . '.' . $extensao;
      
-                $destino = 'imagens/'. $novoNome; //caminho das imagens
+                $destino = 'img/imagens/'. $novoNome; //caminho das imagens
 
                 // tenta mover o arquivo para o destino
                 if (move_uploaded_file ( $arquivo_tmp, $destino) ) {

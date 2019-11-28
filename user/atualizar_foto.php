@@ -25,15 +25,6 @@ echo"oi":
  
 	        $destino = 'fotos/'. $novoNome; //caminho das imagens
 
-
-
-
-
-
-
-
-	        
-
 	        // tenta mover o arquivo para o destino
 	        if (move_uploaded_file ( $arquivo_tmp, $destino) ) {
 

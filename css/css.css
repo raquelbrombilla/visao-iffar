@@ -209,3 +209,156 @@
 }
 
 
+.img_user {
+
+  border-style: solid; // Remove the border on images inside links in IE 10-.
+  border-width: 0.5px;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+}
+
+.botao{
+  font-family: Arial;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 700;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5%;
+}
+
+.botao-color{
+  background-color: #1f682d;
+  color: #fff;
+}
+
+.botao-color:hover{
+  background-color: #1f682deb;
+  color: #fff;
+      box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+
+}
+
+.botao-color2{
+  background-color: #ea0a0a;
+  color: #fff;
+}
+
+.botao-color2:hover{
+  background-color: #ea0a0a;
+  color: #fff;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.a-btn{
+  color: #f8f9fa;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.a-btn:hover{
+  color: #f8f9fa;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.perfil{
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.dados {
+  margin-top: 6%;
+}
+
+.tabela{  
+  margin-top: 6%;
+
+}
+
+.titulo{
+  padding-top: 5%;
+  padding-bottom: 5%;
+  font-size: 50px;
+  font-family: 'Muli', sans-serif;
+  text-align: center;
+  color: #343a40;
+  font-weight: thin;
+}
+
+.hr{
+  height: 1px; 
+  background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+} 
+
+.publicacao{
+    padding: 7%;
+    margin-bottom: 1%;
+    border-radius: 0.5rem;
+    margin-top: 3%;
+    margin-left: 5%;
+    margin-right: 5%;
+  
+}
+
+.titulo_publi{
+  font-size: 20px;
+  color: #000;
+  font-family: 'Muli', sans-serif;
+}
+
+.data_publi{
+  color: #343a40;
+  font-family: 'Muli', sans-serif;
+  font-style: italic;
+
+}
+
+.data{
+  color: #000;
+  font-family: 'Muli', sans-serif;
+
+
+}
+
+a{
+    color: #383d41;
+    text-decoration: none;
+}
+ a:hover{
+    color: #383d41;
+    text-decoration: none;
+}
+
+.btnn{
+  display:block;
+  text-indent:-9000em;
+  overflow:hidden;
+  background:url(/Visao-IFFar/menu/barra.png) no-repeat 0 0;
+  border:none;
+}
+.div2{
+  white-space: nowrap; 
+    width: 20em; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+
+.gallery-block .cards-gallery h6{font-size: 17px; font-weight: bold;}
+
+.parag{
+    padding-bottom: 3%;
+    padding-left: 15%;
+    padding-right: 15%;
+    text-align: justify;
+}
+
+.parag2{
+    padding-left: 25%;
+    text-align: justify;
+}
